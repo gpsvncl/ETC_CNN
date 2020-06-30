@@ -46,7 +46,6 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 
 ### Some modification
 
-Some modification
 1. There is no padding in payload. 
 2. More comments in source code.
 
