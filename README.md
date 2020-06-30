@@ -57,6 +57,7 @@ pkt2flow https://github.com/caesar0301/pkt2flow. When you want to process traffi
 
 1. non-tcp and non-udp traffic will be processed in the future, e.g. IGMP, ICMP, ICMPv6, ESP, etc.
 2. TLS fingerprint feature may be added in the future.
+3. Until now, this tool support offline mode, online mode will be added in the future.
 
 ### Contact
 E-mail: onionnm@protonmail.com
