@@ -28,11 +28,11 @@ After preparation, the program can directly use.
 
 python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 
-The directory **input** contains some subdirectories. These subdirectories contains the pcap and pcapng traffic. Each subdirectory represent a categary of the network traffic you want to classify. In other words, the amount of these subdirectories is equal to the categories of your network traffic.
-The directory **output** contains json files, which cantain the flow results. The amount of json files is equal to the categories of your network traffic.
-The option **-n** means the name of output files, e.g class1.json class2.json class3.json.
-The option **-s** means combine packets to flow in bidirection way. The flow is bi-flow after using this option.
-The option **-m** means more accuracy features in json flow, including 5-tuple, IP layer field, tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. This option may be desperated in the future.
+1. The directory **input** contains some subdirectories. These subdirectories contains the pcap and pcapng traffic. Each subdirectory represent a categary of the network traffic you want to classify. In other words, the amount of these subdirectories is equal to the categories of your network traffic.
+2. The directory **output** contains json files, which cantain the flow results. The amount of json files is equal to the categories of your network traffic.
+3. The option **-n** means the name of output files, e.g class1.json class2.json class3.json.
+4. The option **-s** means combine packets to flow in bidirection way. The flow is bi-flow after using this option.
+5. The option **-m** means more accuracy features in json flow, including 5-tuple, IP layer field, tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. This option may be desperated in the future.
 
 
 ### New feature comparing with xl58
@@ -47,8 +47,8 @@ The option **-m** means more accuracy features in json flow, including 5-tuple, 
 ### Some modification
 
 Some modification
-1.There is no padding in payload. 
-2.More comments in source code.
+1. There is no padding in payload. 
+2. More comments in source code.
 
 ### Useful tool
 
