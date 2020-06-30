@@ -35,7 +35,7 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 4. The option **-s** means combine packets to flow in bidirection way. The flow is bi-flow after using this option.
 5. The option **-m** means more detialed features in json flow, including 5-tuple, IP layer field, tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. This option may be desperated in the future.
 
-### New feature comparing with xl58
+### New feature comparing with ETC_CNN
 
 1. Firstly, the udp packet is able to process.
 2. Secondly, the timestamp of each packet in the flow has been extracted. The timestamp of packet is delta comparing with the first packet in the flow.
@@ -44,7 +44,7 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 5. There are two 2-layer type can parsing using dpkt,ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
 6. The retransmittion packets has dropped in the flow, when process the traffic.
 
-### Some modification comparing with xl58
+### Some modification comparing with ETC_CNN
 
 1. There is no padding in payload. 
 2. More comments in source code.
