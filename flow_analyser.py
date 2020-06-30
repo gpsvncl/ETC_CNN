@@ -45,7 +45,7 @@ class Flow_Analyser:
                 elif input_file.endswith('.pcapng'):
                     packets = dpkt.pcapng.Reader(f)
                 capture_type = 'offline'
-            #The online modules has not been accomplished.
+            #TODO The online modules has not been accomplished.
             else:
                 packets = pcap.pcap(input_file, timeout_ms=1000)
                 capture_type = 'online'
@@ -243,7 +243,7 @@ class Flow_Analyser:
                         self.out_file_pointer.flush()
             return
 
-        #simple parse output, you can do your analysis in your view according to the output
+        #simple parse output, you can do your analysis in your view according to the output, this may be desperated in the future.
         for rec_value in record_data.values():
             try:
                 if rec_value['flow_key']['protocol'] == 'TCP':
