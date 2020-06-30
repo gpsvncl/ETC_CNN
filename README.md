@@ -41,8 +41,8 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 2. Secondly, the timestamp of each packet in the flow has been extracted. The timestamp of packet is delta comparing with the first packet in the flow.
 3. Thirdly, the 5-tuples have included in the json files, when option -m used.
 4. IPv6 has been supoorted.
-5. There are two 2-layer type can parsing using dpkt,ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
-6. The retransmittion packets has dropped in the flow, when process the traffic.
+5. There are two 2-layer type can parsing using dpkt, ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
+6. The retransmission packets has dropped in the flow, when process the traffic.
 
 ### Some modification comparing with ETC_CNN
 
