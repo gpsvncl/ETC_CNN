@@ -42,7 +42,7 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 3. Thirdly, the 5-tuples have included in the json files, when option -m used.
 4. IPv6 has been supoorted.
 5. There are two 2-layer type can parsing using dpkt,ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
-6. The retransmittion packets has dropped.
+6. The retransmittion packets has dropped in the flow, when process the traffic.
 
 ### Some modification
 
@@ -50,13 +50,14 @@ Some modification
 1. There is no padding in payload. 
 2. More comments in source code.
 
-### Other Useful tool
+### Other useful tool
 
 pkt2flow https://github.com/caesar0301/pkt2flow. When you want to process traffic in pcap or pcapng file which cantains many flows to single-flow pcaps or pcapngs, this tool may be helpful.
 
 ### Future work
 
 1. non-tcp and non-udp traffic will be processed in the future.
+2. If author has time, the TLS fingerprint feature may be added.
 
 ### Contact
 E-mail: onionnm@protonmail.com
