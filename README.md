@@ -1,30 +1,44 @@
-# ETC_CNN
-Encrypted traffic classification  use CNN
-采用CNN对加密流量进行分类 当前版本仅支持TCP。简单的示例程序。
-第一步：将pcap数据包转换为json。  
-pcap2json.py 
--i 后接pcap格式或者pcapng格式文件，也可是包含若干pcap文件的 目录/*。 为了便于后续数据标注，该目录下的pcap应为同一标签类型。
--o 输出的目标文件，不设置则默认输出到stdout
--s 以双向流提取(默认是单向流）
--m 直接将流映射成为xl_map格式（若要使用本工具提供的分类器则为必选。不设置则仅使用本工具提供的组流功能）
-示例：
-python3 pcap2json.py  -i  dir/*  -o  out1.json  -s  -m
-python3 pcap2json.py  -i  test.pcap  -o  out2.json  -s  -m 
+First of all, thanks to my colleague xl58. My work maybe be delayed without him. Besides thanks to the author of dpkg library, they provide a straight way to parse various network protocols using python.
 
-第二步:将提取的xl_map打上标签
-label_data.py
+This repository is dedicated to transfer traffic in pcap and pcapng to flow. The results of flows is store in json file. It's a pre-work of Traffic Classification. After processing network traffic, you can extract other features of traffic from json files. Based on the features you have extracted, you can feed the features in Machine Learning (ML) Algorithms. This repository won't provide ML Algorithms, the main work is to transfer packet in pcap and pcapng to flow.
 
--i pcap2json.py （m参数）产生的json文件
--o 输出的目标文件，不设置则默认输出到stdout
--l 输入json文件中的数据对应的标签
-注意:将不同标签的数据输出到同一个json文件里方便训练（追加方式写文件），因此最开始需保证输出文件不存在或者内容为空。
-示例：
-python3 label_data.py -i out1.json -o out.json -l chat
-python3 label_data.py -i out2.json -o out.json -l email
-python3 label_data.py -i out3.json -o out.json -l p2p
-python3 label_data.py -i out4.json -o out.json -l voip
+Environment and Installation
+The libpcap, dpkt and pypcap libraty is needed This repository. When you using the program, please use python3.
 
-第三步：读取数据训练
-python3 etc_cnn.py 
-需要将第二步标注好的json重命名为data.json(这里偷懒未以参数形式读输入文件名）
+Libpcap installation
+sudo apt-get install build-essential libpcap-dev
 
+Dpkt installation
+pip3 install dpkt
+
+Pypcap installation
+pip3 install pypcap
+
+After preparation, the program can directly use.
+
+Runnning
+python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
+
+The directory input contains some subdirectories. These subdirectories contains the pcap and pcapng traffic. Each subdirectory represent a categary of the network traffic you want to classify. In other words, the amount of these subdirectories is equal to the categories of your network traffic.
+The directory output contains json files, which cantain the flow results. The amount of json files is equal to the categories of your network traffic.
+The option -n means the name of output files, e.g class1.json class2.json class3.json.
+The option -s means combine packets to flow in bidirection way. The flow is bi-flow after using this option.
+The option -m means more accuracy features in json flow, including 5-tuple, IP layer field, Tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. This option may be desperated in the future.
+
+New feature comparing with xl58
+1. Firstly, the udp traffic is able to process.
+2. Secondly, the timestamp of each packet in the flow has been extracted. The timestamp of packet is delta comparing with the first packet in flow.
+3. Thirdly, the 5-tuples have included in the json files, when option -m used.
+4. IPv6 has been supoorted.
+5. There are two 2-layer type can parsing using dpkt,ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
+6. The retransmittion
+
+Some modification
+1.There is no padding in payload. 
+2.More comments
+
+Useful tool
+pkt2flow https://github.com/caesar0301/pkt2flow. When you want to process traffic in pcap or pcapng file which cantain many flows to single-flow pcaps or pcapngs, this tool may be helpful.
+
+Future work
+1. non-tcp and non-udp traffic will be processed in the future. 
