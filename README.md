@@ -9,7 +9,7 @@ This repository is dedicated to transfer traffic in pcap and pcapng files into f
 
 ### Environment and Installation
 
-The libpcap, dpkt and pypcap library is needed in this repository. When you using the program, please use **python3**.
+The libpcap, dpkt and pypcap library is needed in this repository. When you using the program, please use **python3**. This repository has been test in Ubuntu 16.04 OS.
 
 #### Libpcap installation
 
