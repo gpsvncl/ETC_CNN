@@ -3,7 +3,7 @@
 Introduction
 =============
 
-First of all, thanks to my colleague xl58. My work maybe be delayed without him. Besides thanks to the author of dpkg library, they provide a straight way to parse various network protocols using python.
+First of all, thanks to my colleague xl58 (https://github.com/85lx). My work maybe be delayed without him. Besides thanks to the author of dpkg library, they provide a straight way to parse various network protocols using python.
 
 This repository is dedicated to transfer traffic in pcap and pcapng files into flow. The results of flows is stored in json file. It's a pre-work of Traffic Classification. After processing network traffic, you can extract other features of traffic from json files. Based on the features you have extracted, you can feed the features in Machine Learning (ML) Algorithms. This repository won't provide ML Algorithms, the main work is to transfer packets in pcap and pcapng files into flow.
 
