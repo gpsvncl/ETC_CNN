@@ -5,7 +5,7 @@ Introduction
 
 First of all, thanks to my colleague xl58 (https://github.com/85lx). My work maybe be delayed without him. Besides thanks to the author of dpkg library, they provide a straight way to parse various network protocols using python.
 
-This repository is dedicated to transfer traffic in pcap and pcapng files into flow. The results of flows is stored in json file. It's a pre-work of Traffic Classification. After processing network traffic, you can extract other features of traffic from json files. Based on the features you have extracted, you can feed the features in Machine Learning (ML) Algorithms. This repository won't provide ML Algorithms, the main work is to transfer packets in pcap and pcapng files into flow.
+This repository is dedicated to transfer traffic in pcap and pcapng files into flow. The results of flows are stored in json file. It's a pre-work of Traffic Classification. After processing network traffic, you can extract other features of traffic from json files. Based on the features you have extracted, you can feed the features in Machine Learning (ML) Algorithms. This repository won't provide ML Algorithms, the main work is to transfer packets in pcap and pcapng files into flow.
 
 ### Environment and Installation
 
@@ -33,7 +33,7 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 2. The directory **output** contains json files, which cantain the flow results. The amount of json files is equal to the categories of your network traffic.
 3. The option **-n** means the name of output files, e.g class1.json class2.json class3.json.
 4. The option **-s** means combine packets to flow in bidirection way. The flow is bi-flow after using this option.
-5. The option **-m** means more detialed features in json flow, including 5-tuple, IP layer field, tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. This option may be desperated in the future.
+5. The option **-m** means more detialed features in json flow, including 5-tuple, IP layer field, tcp layer field and payload in packet. If option -m is not used, the coarse-grain result will be obtained. However it maybe give you more freedom to parsing the data by yourself. The coarse-grain result may be desperated in the future.
 
 ### New feature comparing with ETC_CNN
 
@@ -42,7 +42,7 @@ python3 pcap2json.py -i /yourpath1/input -o /yourpath2/output -n class -s -m
 3. Thirdly, the 5-tuples have included in the json files, when option -m used.
 4. IPv6 has been supoorted.
 5. There are two 2-layer type can parsing using dpkt, ethernet and raw packet which has no 2-layer. But the raw packet parsing only supoort IPv4.
-6. The retransmission packets has dropped in the flow, when process the traffic.
+6. The retransmission packets in the flow have been discarded, when process the traffic.
 
 ### Some modification comparing with ETC_CNN
 
